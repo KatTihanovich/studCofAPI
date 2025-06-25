@@ -17,8 +17,7 @@ def get_drink():
     if result.empty:
         return jsonify({"error": "Drink not found"}), 404
 
-    # Вернём первый найденный результат
-    return jsonify(result.iloc[0].to_dict())
+    return jsonify(result.to_dict(orient="records"))  # <== список
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
